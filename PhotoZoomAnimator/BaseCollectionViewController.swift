@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "baseCollectionCell"
 
-class BaseCollectionViewController: UICollectionViewController {
+public class BaseCollectionViewController: UICollectionViewController {
     
     let imagesNames = ["IMG_8365", "IMG_8366", "IMG_8367", "IMG_8368", "IMG_8380", "IMG_8390"]
     var images = [UIImage]()
