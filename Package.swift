@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "PhotoZoomAnimator",
+    defaultLocalization: "en",
     platforms: [.iOS(.v13)],
     products: [
         .library(
