@@ -12,6 +12,16 @@ private let reuseIdentifier = "baseCollectionCell"
 
 public class BaseCollectionViewController: UICollectionViewController {
     
+    init() {
+        // Initialize with a UICollectionViewFlowLayout
+        let layout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: layout)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
     let imagesNames = ["IMG_8365", "IMG_8366", "IMG_8367", "IMG_8368", "IMG_8380", "IMG_8390"]
     var images = [UIImage]()
     
