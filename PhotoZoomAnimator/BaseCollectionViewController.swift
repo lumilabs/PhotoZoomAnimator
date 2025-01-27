@@ -78,6 +78,7 @@ public class BaseCollectionViewController: UICollectionViewController {
     
     override public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentIndex = indexPath.item
+        performSegue(withIdentifier: "showFullScreenImage", sender: self)
         print("item selected from grid\(currentIndex)")
     }
 
