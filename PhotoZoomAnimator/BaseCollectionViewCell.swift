@@ -9,7 +9,32 @@
 import UIKit
 
 class BaseCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet var imageView: UIImageView!
-    
+    var imageView: UIImageView!
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupImageView()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupImageView()
+    }
+
+    private func setupImageView() {
+        imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+
+        contentView.addSubview(imageView)
+
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+    }
 }
+
