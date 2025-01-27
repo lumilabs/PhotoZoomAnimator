@@ -164,7 +164,7 @@ extension BaseCollectionViewController: ZoomAnimatorDelegate {
 
 
 extension BaseCollectionViewController: PagingCollectionViewControllerDelegate {
-    func containerViewController(_ containerViewController: PagingCollectionViewController, indexDidChangeTo currentIndex: Int) {
+    public func containerViewController(_ containerViewController: PagingCollectionViewController, indexDidChangeTo currentIndex: Int) {
         self.currentIndex = currentIndex
         collectionView.scrollToItem(at: IndexPath(item: currentIndex, section: 0), at: .centeredVertically, animated: false)
     }
