@@ -15,7 +15,7 @@ protocol PagingCollectionViewControllerDelegate {
 }
 
 
-class PagingCollectionViewController: UICollectionViewController {
+public class PagingCollectionViewController: UICollectionViewController {
 
     var startingIndex: Int = 0
     var images = [UIImage]()
@@ -29,7 +29,7 @@ class PagingCollectionViewController: UICollectionViewController {
     // base view controller to get updated about changes in index
     var containerDelegate: PagingCollectionViewControllerDelegate?
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -64,16 +64,16 @@ class PagingCollectionViewController: UICollectionViewController {
         collectionView.scrollToItem(at: IndexPath(item: startingIndex, section: 0), at: .right, animated: false)
     }
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PagingCollectionViewCell
     
         cell.image = images[indexPath.item]
@@ -83,14 +83,14 @@ class PagingCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var imageNumber = Float((scrollView.contentOffset.x - 0.5 * view.frame.width) / view.frame.width)
         imageNumber.round(.up)
         currentIndex = Int(imageNumber)
     }
     
     // change the base view controller's index, too
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         containerDelegate?.containerViewController(self, indexDidChangeTo: currentIndex)
     }
     
