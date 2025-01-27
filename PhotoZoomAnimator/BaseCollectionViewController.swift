@@ -112,9 +112,10 @@ extension BaseCollectionViewController {
             destinationViewController.images = images
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
                 destinationViewController.startingIndex = indexPath.item
+                print("this is the index path \(indexPath)")
             }
             print("these are the images \(images)")
-            print("this is the index path \(indexPath)")
+            
             
             // set the navigation controller delegate as the `ZoomTransitionController
             // of the destination `PagingCollectionViewController`
