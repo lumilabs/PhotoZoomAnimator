@@ -12,23 +12,25 @@ private let reuseIdentifier = "baseCollectionCell"
 
 public class BaseCollectionViewController: UICollectionViewController {
     
-    public init() {
-        // Initialize with a UICollectionViewFlowLayout
-        let layout = UICollectionViewFlowLayout()
-        super.init(collectionViewLayout: layout)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
     
-    let imagesNames = ["IMG_8365", "IMG_8366", "IMG_8367", "IMG_8368", "IMG_8380", "IMG_8390"]
+    var imagesNames: [String]
     var images = [UIImage]()
     
     let numberOfImagesPerRow: CGFloat = 4.0
     let spacingBetweenCells: CGFloat = 0.1
     
     var currentIndex = 0
+
+    public init(imagesNames: [String]) {
+        self.imagesNames = imagesNames
+        let layout = UICollectionViewFlowLayout()
+        super.init(collectionViewLayout: layout)
+    }
+
+    required init?(coder: NSCoder) {
+        self.imagesNames = [] // Default to an empty array
+        super.init(coder: coder)
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,9 @@ public class BaseCollectionViewController: UICollectionViewController {
         
         for imageName in imagesNames {
             if let image = UIImage(named: imageName) { images.append(image) }
+            else {
+                print("Image not found: \(imageName)")
+            }    
         }
     }
 
