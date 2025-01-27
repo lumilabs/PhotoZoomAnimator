@@ -78,8 +78,29 @@ public class BaseCollectionViewController: UICollectionViewController {
     
     override public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         currentIndex = indexPath.item
-        performSegue(withIdentifier: "showFullScreenImage", sender: self)
-        print("item selected from grid\(currentIndex)")
+        print("item selected from grid \(currentIndex)")
+        
+        // Manually create PagingCollectionViewController
+        let pagingVC = PagingCollectionViewController()
+        
+        // Set stored properties on the destination view controller
+        pagingVC.images = images
+        pagingVC.startingIndex = currentIndex
+        print("this is the index path \(indexPath)")
+        print("these are the images \(images)")
+        
+        // Set the navigation controller delegate for custom transition
+        self.navigationController?.delegate = pagingVC.transitionController
+        
+        // PagingCollectionViewControllerDelegate will get updated about changes in index
+        pagingVC.containerDelegate = self
+        
+        // Set source and destination delegates for the transition controller
+        pagingVC.transitionController.fromDelegate = self
+        pagingVC.transitionController.toDelegate = pagingVC
+        
+        // Push the destination view controller to the navigation stack with the custom transition
+        self.navigationController?.pushViewController(pagingVC, animated: true)
     }
 
 }
