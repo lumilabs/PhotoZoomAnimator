@@ -106,12 +106,15 @@ extension BaseCollectionViewController: UICollectionViewDelegateFlowLayout {
 // segues
 extension BaseCollectionViewController {
     override public func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare function called")
         if let destinationViewController = segue.destination as? PagingCollectionViewController {
             // set stored properties of the destination `PagingCollectionViewController`
             destinationViewController.images = images
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
                 destinationViewController.startingIndex = indexPath.item
             }
+            print("these are the images \(images)")
+            print("this is the index path \(indexPath)")
             
             // set the navigation controller delegate as the `ZoomTransitionController
             // of the destination `PagingCollectionViewController`
@@ -141,7 +144,7 @@ extension BaseCollectionViewController: ZoomAnimatorDelegate {
     
     func getCell(for zoomAnimator: ZoomAnimator) -> BaseCollectionViewCell? {
         let indexPath = zoomAnimator.isPresenting ? collectionView.indexPathsForSelectedItems?.first : IndexPath(item: currentIndex, section: 0)
-        
+        print("this is value of indexPath inside BaseCollectionViewController at ZoomAnimatorDelegate \(indexPath)")
         if let cell = collectionView.cellForItem(at: indexPath!) as? BaseCollectionViewCell {
             return cell
         } else {
