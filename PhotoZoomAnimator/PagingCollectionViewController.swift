@@ -31,6 +31,7 @@ public class PagingCollectionViewController: UICollectionViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        let layout = UICollectionViewFlowLayout()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
