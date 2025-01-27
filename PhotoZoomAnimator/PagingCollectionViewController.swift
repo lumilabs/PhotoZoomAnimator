@@ -117,12 +117,12 @@ extension PagingCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 
 extension PagingCollectionViewController: ZoomAnimatorDelegate {
-    func transitionWillStartWith(zoomAnimator: ZoomAnimator) {
+    public func transitionWillStartWith(zoomAnimator: ZoomAnimator) {
         // add code here to be run just before the transition animation
         hideCellImageViews = zoomAnimator.isPresenting
     }
     
-    func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
+    public func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
         // add code here to be run just after the transition animation
         hideCellImageViews = false
         if let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? PagingCollectionViewCell {
@@ -130,14 +130,14 @@ extension PagingCollectionViewController: ZoomAnimatorDelegate {
         }
     }
     
-    func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
+    public func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
         if let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? PagingCollectionViewCell {
             return cell.imageView
         }
         return nil
     }
     
-    func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {
+    public func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {
         if let cell = collectionView.cellForItem(at: IndexPath(item: currentIndex, section: 0)) as? PagingCollectionViewCell {
             return cell.scrollView.convert(cell.imageView.frame, to: view)
         }
