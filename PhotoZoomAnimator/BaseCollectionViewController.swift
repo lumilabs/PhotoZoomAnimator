@@ -33,6 +33,7 @@ public class BaseCollectionViewController: UICollectionViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        collectionView.register(BaseCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
