@@ -9,7 +9,7 @@
 import UIKit
 
 
-protocol ZoomAnimatorDelegate: class {
+public protocol ZoomAnimatorDelegate: class {
     // these two methods are run just before and just after the animation
     // they are here as helper functions and do not need to do anything
     func transitionWillStartWith(zoomAnimator: ZoomAnimator)
@@ -23,7 +23,7 @@ protocol ZoomAnimatorDelegate: class {
 }
 
 
-class ZoomAnimator: NSObject {
+public class ZoomAnimator: NSObject {
 
     weak var fromDelegate: ZoomAnimatorDelegate?
     weak var toDelegate: ZoomAnimatorDelegate?
@@ -184,7 +184,7 @@ class ZoomAnimator: NSObject {
     
     
     
-    private func calculateZoomInImageFrame(image: UIImage, forView view: UIView) -> CGRect {
+    public func calculateZoomInImageFrame(image: UIImage, forView view: UIView) -> CGRect {
         
         let viewRatio = view.frame.size.width / view.frame.size.height
         let imageRatio = image.size.width / image.size.height
@@ -205,11 +205,11 @@ class ZoomAnimator: NSObject {
 
 
 extension ZoomAnimator: UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return isPresenting ? 0.5 : 0.25
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         if isPresenting {
             animateZoomInTransition(using: transitionContext)
         } else {
