@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZoomTransitionController: NSObject {
+public class ZoomTransitionController: NSObject {
     
     weak var fromDelegate: ZoomAnimatorDelegate?
     weak var toDelegate: ZoomAnimatorDelegate?
@@ -30,14 +30,14 @@ class ZoomTransitionController: NSObject {
 extension ZoomTransitionController: UIViewControllerTransitioningDelegate {
     
     // just swap the delegates depending on direction of animation
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.animator.isPresenting = true
         self.animator.fromDelegate = fromDelegate
         self.animator.toDelegate = toDelegate
         return self.animator
     }
     
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.animator.isPresenting = false
         let tmp = self.fromDelegate
         self.animator.fromDelegate = self.toDelegate
@@ -47,7 +47,7 @@ extension ZoomTransitionController: UIViewControllerTransitioningDelegate {
     
     // decide whether or not to use interactive controller
     // the interactive controller uses the same animator, though
-    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         if !self.isInteractive {
             return nil
         }
@@ -62,7 +62,7 @@ extension ZoomTransitionController: UIViewControllerTransitioningDelegate {
 
 extension ZoomTransitionController: UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         // tell the animation which way it is going and set some stored properties
         if operation == .push {
@@ -83,7 +83,7 @@ extension ZoomTransitionController: UINavigationControllerDelegate {
     
     // whether or not to use the interactive controller
     // the interactive controller uses the same animator, though
-    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    public func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         
         if !self.isInteractive {
             return nil
@@ -97,7 +97,7 @@ extension ZoomTransitionController: UINavigationControllerDelegate {
 
 
 extension ZoomTransitionController {
-    func didPanWith(gestureRecognizer: UIPanGestureRecognizer) {
+    public func didPanWith(gestureRecognizer: UIPanGestureRecognizer) {
         interactionController.didPanWith(gestureRecognizer: gestureRecognizer)
     }
 }
