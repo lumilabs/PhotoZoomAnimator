@@ -81,7 +81,7 @@ public class BaseCollectionViewController: UICollectionViewController {
         print("item selected from grid \(currentIndex)")
         
         // Manually create PagingCollectionViewController
-        let pagingVC = PagingCollectionViewController()
+        let pagingVC = PagingCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         
         // Set stored properties on the destination view controller
         pagingVC.images = images
