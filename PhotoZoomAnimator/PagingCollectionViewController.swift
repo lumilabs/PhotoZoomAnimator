@@ -29,11 +29,6 @@ public class PagingCollectionViewController: UICollectionViewController {
     // base view controller to get updated about changes in index
     var containerDelegate: PagingCollectionViewControllerDelegate?
 
-    public init() {
-        let layout = UICollectionViewFlowLayout()
-        super.init(collectionViewLayout: layout)
-    }
-
     
     override public func viewDidLoad() {
         super.viewDidLoad()
