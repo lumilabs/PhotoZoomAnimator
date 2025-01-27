@@ -131,11 +131,11 @@ extension BaseCollectionViewController {
 
 // ZoomAnimatorDelegate
 extension BaseCollectionViewController: ZoomAnimatorDelegate {
-    func transitionWillStartWith(zoomAnimator: ZoomAnimator) {
+    public func transitionWillStartWith(zoomAnimator: ZoomAnimator) {
         // add code here to be run just before the transition animation
     }
     
-    func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
+    public func transitionDidEndWith(zoomAnimator: ZoomAnimator) {
         // add code here to be run just after the transition animation
     }
     
@@ -149,12 +149,12 @@ extension BaseCollectionViewController: ZoomAnimatorDelegate {
         }
     }
     
-    func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
+    public func referenceImageView(for zoomAnimator: ZoomAnimator) -> UIImageView? {
         if let cell = getCell(for: zoomAnimator) { return cell.imageView }
         return nil
     }
     
-    func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {
+    public func referenceImageViewFrameInTransitioningView(for zoomAnimator: ZoomAnimator) -> CGRect? {
         if let cell = getCell(for: zoomAnimator) {
             return cell.contentView.convert(cell.imageView.frame, to: view)
         }
