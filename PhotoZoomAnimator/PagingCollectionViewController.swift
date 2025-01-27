@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "pagingImageCell"
 
-protocol PagingCollectionViewControllerDelegate {
+public protocol PagingCollectionViewControllerDelegate {
     func containerViewController(_ containerViewController: PagingCollectionViewController, indexDidChangeTo currentIndex: Int)
 }
 
@@ -47,7 +47,7 @@ public class PagingCollectionViewController: UICollectionViewController {
     }
     
     
-    func setupCollectionView() {
+    public func setupCollectionView() {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isPagingEnabled = true
