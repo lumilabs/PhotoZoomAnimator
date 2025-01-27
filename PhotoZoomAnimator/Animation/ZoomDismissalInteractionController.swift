@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZoomDismissalInteractionController: NSObject {
+public class ZoomDismissalInteractionController: NSObject {
     
     var transitionContext: UIViewControllerContextTransitioning?
     var animator: UIViewControllerAnimatedTransitioning?
@@ -134,7 +134,7 @@ class ZoomDismissalInteractionController: NSObject {
     
     
     
-    func calculateBrackgroundAlphaFor(_ view: UIView, atDelta delta: CGFloat) -> CGFloat {
+    public func calculateBrackgroundAlphaFor(_ view: UIView, atDelta delta: CGFloat) -> CGFloat {
         let startingAlpha: CGFloat = 1.0
         let finalAlpha: CGFloat = 0.0
         let totalAvailableAlpha = startingAlpha - finalAlpha
@@ -146,7 +146,7 @@ class ZoomDismissalInteractionController: NSObject {
     }
     
     
-    func calculateScaleIn(_ view: UIView, atDelta delta: CGFloat) -> CGFloat {
+    public func calculateScaleIn(_ view: UIView, atDelta delta: CGFloat) -> CGFloat {
         let startingScale: CGFloat = 1.0
         let finalScale: CGFloat = 0.5
         let totalAvailableScale = startingScale - finalScale
@@ -162,7 +162,7 @@ class ZoomDismissalInteractionController: NSObject {
 
 extension ZoomDismissalInteractionController: UIViewControllerInteractiveTransitioning {
     
-    func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
+    public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
         
         self.transitionContext = transitionContext
         
