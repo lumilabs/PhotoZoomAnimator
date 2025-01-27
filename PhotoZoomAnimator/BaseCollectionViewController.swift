@@ -12,7 +12,7 @@ private let reuseIdentifier = "baseCollectionCell"
 
 public class BaseCollectionViewController: UICollectionViewController {
     
-    init() {
+    public init() {
         // Initialize with a UICollectionViewFlowLayout
         let layout = UICollectionViewFlowLayout()
         super.init(collectionViewLayout: layout)
